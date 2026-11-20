@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>한화시스템 ICT 부스 이벤트</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700&display=swap">
+<style>
+  :root {
+    --paper: #F2F3F5; --card: #FFFFFF; --ink: #151A22; --steel: #586271; --line: #D8DDE4;
+    --orange: #F37321; --orange-deep: #A84608; --deep: #18212F; --ok: #1B7F56; --bad: #B3261E;
+    --body: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --num: "Saira Condensed", "Pretendard Variable", Pretendard, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; word-break: keep-all; }
+  button, input, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .wrap { max-width: 480px; margin: 0 auto; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; background: var(--paper); }
+
+  .top { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: var(--card); border-bottom: 1px solid var(--line); }
+  .top .brand { font-weight: 800; font-size: 15px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
+  .top .brand::before { content: ""; width: 10px; height: 10px; background: var(--orange); border-radius: 2px; }
+  .top .brand img { width: 26px; height: 26px; border-radius: 6px; display: block; }
+  .top .brand.has-logo::before { display: none; }
+  .top .expo { font-size: 13px; color: var(--steel); }
+  .demo { background: var(--deep); color: #fff; font-size: 12.5px; padding: 7px 20px; }
+
+  main { flex: 1; padding: 24px 20px 32px; display: flex; flex-direction: column; }
+  h1 { font-size: 30px; line-height: 1.22; letter-spacing: -0.03em; font-weight: 800; margin: 8px 0 14px; white-space: pre-line; }
+  h2 { font-size: 22px; line-height: 1.3; letter-spacing: -0.02em; font-weight: 800; margin: 0 0 6px; }
+  h3 { font-size: 16px; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+  p { margin: 0 0 12px; }
+  .lede { color: var(--steel); font-size: 16px; }
+  .muted { color: var(--steel); font-size: 14px; }
+  .spacer { flex: 1; min-height: 20px; }
+
+  .btn { display: block; width: 100%; border: 0; border-radius: 10px; padding: 16px 18px; font-size: 17px; font-weight: 700; background: var(--orange); color: var(--ink); text-align: center; text-decoration: none; }
+  .btn:disabled { background: #E3E6EA; color: #8B939E; cursor: default; }
+  .btn.ghost { background: transparent; border: 1.5px solid var(--ink); }
+  .btn.dark { background: var(--deep); color: #fff; }
+  .btn.small { padding: 11px 14px; font-size: 15px; width: auto; display: inline-block; }
+  .linkbtn { background: none; border: 0; padding: 8px 0; color: var(--steel); text-decoration: underline; font-size: 14px; }
+  .err { color: var(--bad); font-size: 14px; font-weight: 600; min-height: 22px; margin: 8px 0; }
+
+  /* 참여 순서 - 실제로 순서가 있는 4단계 */
+  .steps { list-style: none; margin: 22px 0 0; padding: 0; background: var(--card); border-radius: 14px; position: relative; overflow: hidden; }
+  .steps li { display: flex; gap: 14px; align-items: baseline; padding: 15px 18px 15px 22px; border-bottom: 1.5px dashed var(--line); }
+  .steps li:last-child { border-bottom: 0; }
+  .steps::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--orange); }
+  .steps .n { font-family: var(--num); font-weight: 700; font-size: 26px; line-height: 1; width: 18px; color: var(--orange-deep); }
+  .steps b { display: block; font-size: 16px; }
+  .steps span { color: var(--steel); font-size: 14px; }
+
+  /* 입력 */
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .field label i { font-style: normal; color: var(--orange-deep); }
+  .field input, .field textarea { width: 100%; background: var(--card); border: 1.5px solid var(--line); border-radius: 10px; padding: 13px 14px; font-size: 16px; }
+  .field input:focus, .field textarea:focus { outline: 0; border-color: var(--ink); }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .consent { background: var(--card); border-radius: 12px; padding: 4px 14px; margin: 18px 0 4px; }
+  .consent .item { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .consent .item:last-child { border-bottom: 0; }
+  .check { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; font-weight: 600; }
+  .check input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--orange-deep); flex: none; }
+  details { margin: 6px 0 0 32px; font-size: 13px; color: var(--steel); }
+  details summary { cursor: pointer; text-decoration: underline; }
+  details ul { margin: 8px 0 0; padding-left: 16px; }
+
+  /* 설문 */
+  .progress { display: flex; gap: 4px; margin-bottom: 22px; }
+  .progress i { flex: 1; height: 5px; border-radius: 3px; background: var(--line); }
+  .progress i.on { background: var(--orange); }
+  .qno { font-family: var(--num); font-size: 18px; font-weight: 700; color: var(--orange-deep); }
+  .opts { display: grid; gap: 9px; margin: 18px 0 8px; }
+  .opt { text-align: left; background: var(--card); border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 16px; font-size: 16px; font-weight: 600; }
+  .opt small { display: block; font-weight: 400; color: var(--steel); font-size: 13.5px; margin-top: 2px; }
+  .opt.on { border-color: var(--ink); background: var(--deep); color: #fff; }
+  .opt.on small { color: #C3CAD4; }
+
+  /* 룰렛 */
+  .wheelbox { position: relative; width: min(84vw, 330px); margin: 22px auto 10px; aspect-ratio: 1; }
+  .wheelbox svg { width: 100%; height: 100%; display: block; transition: transform 4.6s cubic-bezier(.12,.72,.1,1); }
+  .pointer { position: absolute; left: 50%; top: -8px; transform: translateX(-50%); width: 0; height: 0; border-left: 13px solid transparent; border-right: 13px solid transparent; border-top: 24px solid var(--ink); z-index: 2; }
+  .result { background: var(--card); border-radius: 14px; padding: 20px; text-align: center; margin-top: 14px; border: 2px solid var(--ink); }
+  .result .prize { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; margin: 2px 0 8px; }
+
+  /* 패스 카드 - 이 화면의 중심 */
+  .pass { background: var(--deep); color: #fff; border-radius: 16px; position: relative; overflow: hidden; padding: 20px 20px 18px 30px; }
+  .pass::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 10px; background: var(--orange); }
+  .pass .lbl { font-size: 13px; color: #B9C1CC; }
+  .pass .no { font-family: var(--num); font-weight: 700; font-size: 84px; line-height: .95; letter-spacing: 0.02em; margin: 2px 0 10px; }
+  .pass .who { font-size: 17px; font-weight: 700; }
+  .pass .co { font-size: 14px; color: #B9C1CC; }
+  .pass .cut { border-top: 1.5px dashed #47536A; margin: 16px -20px 14px -20px; }
+  .pass .note { font-size: 13.5px; color: #D5DAE1; margin: 0; }
+
+  .card { background: var(--card); border-radius: 14px; padding: 18px; margin-top: 14px; }
+  .win { border: 2px solid var(--orange); }
+  .code { font-family: var(--num); font-weight: 700; font-size: 44px; letter-spacing: 0.14em; line-height: 1.1; }
+  .tag { display: inline-block; font-size: 12.5px; font-weight: 700; padding: 3px 9px; border-radius: 20px; background: #E7F3EC; color: var(--ok); }
+  .sec { margin: 28px 0 0; }
+  .sec > p { margin-bottom: 0; }
+  .sol { background: var(--card); border-radius: 14px; margin-top: 12px; overflow: hidden; }
+  .sol header { padding: 16px 18px 12px; }
+  .sol header p { margin: 4px 0 0; font-size: 14px; color: var(--steel); }
+  .mat { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 13px 18px; border: 0; border-top: 1px solid var(--line); background: none; text-align: left; font-size: 15px; font-weight: 600; text-decoration: none; color: var(--ink); }
+  .mat .kind { flex: none; font-size: 12.5px; font-weight: 700; padding: 3px 8px; border-radius: 6px; background: var(--paper); color: var(--steel); min-width: 44px; text-align: center; }
+  .mat .t { flex: 1; }
+  .mat .seen { flex: none; font-size: 12.5px; color: var(--ok); font-weight: 700; }
+
+  /* 시트(모달) */
+  .scrim { position: fixed; inset: 0; background: rgba(21,26,34,.55); display: none; align-items: flex-end; justify-content: center; z-index: 20; }
+  .scrim.on { display: flex; }
+  .sheet { background: var(--card); width: 100%; max-width: 480px; border-radius: 18px 18px 0 0; padding: 22px 20px 26px; max-height: 92vh; overflow: auto; }
+  .sheet .close { float: right; background: none; border: 0; font-size: 15px; color: var(--steel); padding: 4px 0 4px 12px; text-decoration: underline; }
+  .player { width: 100%; aspect-ratio: 16/9; background: #000; border: 0; border-radius: 10px; margin: 12px 0; display: block; }
+  .toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 10px; font-size: 15px; font-weight: 600; z-index: 30; display: none; max-width: 88vw; }
+  .toast.on { display: block; }
+  .loading { text-align: center; color: var(--steel); padding: 80px 0; }
+
+  @media (prefers-reduced-motion: reduce) { .wheelbox svg { transition-duration: .01s; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand" id="brand"></div>
+    <div class="expo" id="expo"></div>
+  </div>
+  <div class="demo" id="demo" hidden>데모 모드입니다. 입력한 내용은 이 브라우저에만 저장됩니다.</div>
+  <main id="app"><div class="loading">불러오는 중입니다</div></main>
+</div>
+<div class="scrim" id="scrim"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<!-- 기본 설정. 같은 폴더에 config.js 가 있으면 그 내용이 우선 적용됩니다 (없어도 동작합니다). -->
+<script>
+/* ==========================================================================
+ * 한화시스템 ICT 부스 이벤트앱 - 설정 파일
+ * 문구·설문·솔루션 설명은 이 파일만 고치면 방문객 화면과 운영자 화면에 함께 반영됩니다.
+ * (경품 재고·당첨 비율, PDF·영상 링크, 운영자 비밀번호는 구글 시트에서 수정합니다)
+ * ========================================================================== */
+window.EVENT_CONFIG = {
+
+  /* Apps Script 웹앱 URL. 비워 두면 '데모 모드'(이 브라우저에만 저장)로 동작합니다. */
+  API_URL: 'https://script.google.com/macros/s/AKfycbw-Ayf_aOqYJN_LrOEwUWdXTG1SBD8FF_RhcDq1cBqrU0WAFkk-6PyZtDxkuT4E4c77tg/exec',
+
+  event: {
+    client: '한화시스템 ICT',
+    expo: 'WIS',                                  // 전시회 이름
+    booth: '',                                    // 예: 'Hall C · C-123'  (비우면 표시 안 함)
+    dates: '',                                    // 예: '2027. 4. 21 – 4. 23' (비우면 표시 안 함)
+    headline: '부스 방문 등록하고\n즉석 경품 받아 가세요',
+    sub: '1분 설문에 참여하시면 그 자리에서 경품을 드리고, 관심 솔루션 자료를 휴대폰으로 바로 보실 수 있습니다.',
+    drawInfo: '현장 추첨 시간은 부스 안내판에서 확인해 주세요. 당첨자 발표 때 부스에 계셔야 경품을 받을 수 있습니다.',
+    logo: 'data:image/png;base64,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'   // 로고 이미지 (data URI 또는 파일 경로). 비우면 주황 사각형 표시
+  },
+
+  goals: { mql: 1000, sql: 10 },
+
+  /* 솔루션 7종 - id 는 구글 시트 Contents 탭의 solution 값과 같아야 합니다. */
+  solutions: [
+    { id: 'mes', name: 'XPERION MES', tagline: '생산·품질·공정을 하나로 잇는 제조실행시스템',
+      desc: '모듈형 구조라 산업 특성에 맞게 확장할 수 있고, 현장 데이터를 실시간으로 모아 생산 가시성과 추적성을 높입니다.' },
+    { id: 'iot', name: 'XPERION IoT', tagline: '설비와 자산을 연결하는 산업용 IoT 플랫폼',
+      desc: '공장 설비 데이터를 수집·관리해 한 플랫폼에서 모니터링하고, 데이터에 근거한 의사결정을 돕습니다.' },
+    { id: 'wms', name: 'XPERION WMS', tagline: 'Low Code 기반의 자체 개발 창고관리시스템',
+      desc: '지표 기반 운영 관리, Rule 기반 프로세스, 멀티 센터·화주 기능으로 물류 운영을 현장에 맞게 조정합니다.' },
+    { id: 'plm', name: 'XPERION PLM', tagline: '제품 정보를 한곳에서 관리하는 제품수명주기관리',
+      desc: '설계부터 생산, 변경 이력까지 제품 데이터를 연결해 개발 협업과 변경 관리를 지원합니다.' },
+    { id: 'haru', name: 'HARU', tagline: '데이터 기반 통합 HR 솔루션',
+      desc: '필요한 인사 모듈만 골라 도입할 수 있고, PC와 모바일에서 임직원과 인사 담당자가 함께 사용합니다.' },
+    { id: 'tomms', name: 'TOMMS', tagline: '장비 수명주기 전반을 관리하는 MRO 솔루션',
+      desc: '실시간 모니터링과 AI 기반 예측정비, 부품 수요예측으로 장비 가용성을 높이고 유지보수 비용을 줄입니다.' },
+    { id: 'esg', name: 'ESG ON', tagline: 'ESG 경영관리 통합 지원 시스템',
+      desc: '공시·평가 대응, 리스크 관리, 공급망 관리까지 ESG 데이터를 한곳에서 관리합니다.' }
+  ],
+
+  /* 설문 - 보기의 id 는 리드 점수 계산에 쓰이므로 바꾸지 마세요. label(보이는 글자)은 자유롭게 수정 가능 */
+  survey: [
+    { key: 'industry', q: '어떤 업종에서 일하시나요?', options: [
+      { id: 'defense', label: '방산·항공' }, { id: 'electronics', label: '전자·반도체·배터리' },
+      { id: 'chemical', label: '화학·소재·에너지' }, { id: 'machinery', label: '기계·자동차·부품' },
+      { id: 'logistics', label: '물류·유통' }, { id: 'finance', label: '금융·서비스' },
+      { id: 'public', label: '공공·교육' }, { id: 'etc', label: '기타' } ] },
+    { key: 'companySize', q: '회사 규모는 어느 정도인가요?', options: [
+      { id: 's0', label: '50명 미만' }, { id: 's50', label: '50 – 299명' },
+      { id: 's300', label: '300 – 999명' }, { id: 's1000', label: '1,000명 이상' } ] },
+    { key: 'role', q: '솔루션 도입에서 어떤 역할을 맡고 계신가요?', options: [
+      { id: 'decision', label: '최종 의사결정' }, { id: 'evaluate', label: '도입 검토·평가 담당' },
+      { id: 'user', label: '실무 사용자' }, { id: 'research', label: '정보 수집 중' },
+      { id: 'other', label: '학생·기타' } ] },
+    { key: 'interests', multi: true, fromSolutions: true, q: '관심 있는 솔루션을 모두 골라 주세요' },
+    { key: 'challenge', q: '지금 가장 해결하고 싶은 과제는 무엇인가요?', options: [
+      { id: 'visibility', label: '생산·품질 현황을 실시간으로 보기' }, { id: 'equipment', label: '설비 데이터 수집과 예지보전' },
+      { id: 'logistics', label: '물류·창고 운영 효율' }, { id: 'product', label: '설계·제품 정보 관리' },
+      { id: 'hr', label: '인사·조직 운영' }, { id: 'esg', label: 'ESG 공시·평가 대응' },
+      { id: 'etc', label: '기타' } ] },
+    { key: 'timeline', q: '도입을 검토하는 시기는 언제쯤인가요?', options: [
+      { id: 'm3', label: '3개월 이내' }, { id: 'm6', label: '6개월 이내' }, { id: 'y1', label: '1년 이내' },
+      { id: 'undecided', label: '아직 정하지 않음' }, { id: 'none', label: '계획 없음' } ] }
+  ],
+
+  /* 개인정보 동의 문구 (초안) - 실제 운영 전에 한화시스템 담당 부서의 검토를 받아 확정하세요. */
+  consent: {
+    privacyTitle: '개인정보 수집·이용 동의 (필수)',
+    privacyBody: [
+      '수집 항목: 이름, 회사명, 부서, 직책, 이메일, 휴대폰 번호, 설문 응답, 자료 열람 기록',
+      '수집 목적: 부스 방문 등록, 경품 추첨 및 지급, 솔루션 자료 제공, 상담 요청 대응',
+      '보유 기간: 행사 종료 후 1년 또는 동의 철회 시까지',
+      '처리 위탁: 행사 운영 대행사 (주)마케팅피플 (이벤트 운영 및 경품 지급)',
+      '동의를 거부할 수 있으며, 거부하시면 이벤트에 참여하실 수 없습니다.'
+    ],
+    marketingTitle: '마케팅 정보 수신 동의 (선택)',
+    marketingBody: [
+      '한화시스템 ICT의 솔루션 소식, 세미나·행사 안내를 이메일과 문자로 받습니다.',
+      '동의하지 않아도 이벤트에 참여할 수 있으며, 언제든 수신을 거부할 수 있습니다.'
+    ]
+  }
+};
+
+</script>
+<script src="config.js"></script>
+<script>
+(function () {
+"use strict";
+/* ==========================================================================
+ * 한화시스템 ICT 부스 이벤트앱 - 공통 로직 (core)
+ * 이 구간은 서버(Apps Script)와 데모 모드(브라우저)가 똑같이 사용합니다.
+ * 점수 기준을 바꾸려면 HS_SCORE 와 HS_GRADE 만 수정하세요.
+ * ========================================================================== */
+var HS_VERSION = '1.0.0';
+
+var HS_LEAD_FIELDS = ['id', 'seq', 'token', 'createdAt', 'source', 'name', 'company', 'dept', 'title',
+  'email', 'phone', 'consentPrivacy', 'consentMarketing', 'surveyAt', 'industry', 'companySize', 'role',
+  'interests', 'challenge', 'timeline', 'consult', 'consultAt', 'consultMemo', 'viewed', 'pdfViews',
+  'videoViews', 'linkViews', 'score', 'grade', 'prizeId', 'prizeName', 'prizeWin', 'claimCode', 'prizeAt',
+  'claimedAt', 'staffRating', 'staffNote', 'salesStatus', 'updatedAt'];
+var HS_LEAD_NUMS = ['seq', 'pdfViews', 'videoViews', 'linkViews', 'score'];
+var HS_PRIZE_FIELDS = ['id', 'name', 'win', 'total', 'remaining', 'weight'];
+var HS_PRIZE_NUMS = ['total', 'remaining', 'weight'];
+var HS_CONTENT_FIELDS = ['id', 'solution', 'type', 'title', 'url'];
+var HS_DRAW_FIELDS = ['id', 'at', 'prize', 'leadId', 'seq', 'name', 'company', 'phone', 'status'];
+var HS_DRAW_NUMS = ['seq'];
+var HS_EVENT_FIELDS = ['at', 'leadId', 'kind', 'detail'];
+
+/* ---- 리드 점수 기준 (설문 보기의 id 와 일치해야 합니다. config.js 참고) ---- */
+var HS_SCORE = {
+  role: { decision: 25, evaluate: 20, user: 10, research: 5, other: 0 },
+  timeline: { m3: 30, m6: 22, y1: 12, undecided: 4, none: 0 },
+  companySize: { s1000: 10, s300: 8, s50: 5, s0: 2 },
+  interestEach: 2, interestMax: 6,
+  consult: 30,
+  pdfEach: 4, pdfMax: 12,
+  videoEach: 3, videoMax: 9,
+  linkEach: 2, linkMax: 6,
+  staff: { A: 20, B: 10, C: 0 }
+};
+var HS_GRADE = { hot: 70, warm: 40 };   // 70점 이상 Hot, 40점 이상 Warm, 그 아래 Cold
+
+/* ---- 처음 설치할 때 시트에 들어가는 기본값 (설치 후에는 시트에서 직접 수정) ---- */
+var HS_SOLUTION_PAGE = 'https://www.hanwhasystems.com/ict/kr/business/solution/';
+var HS_SEED = {
+  prizes: [
+    { id: 'p1', name: '무선 이어폰', win: 'Y', total: 5, remaining: 5, weight: 1 },
+    { id: 'p2', name: '보조배터리', win: 'Y', total: 30, remaining: 30, weight: 6 },
+    { id: 'p3', name: '커피 기프티콘', win: 'Y', total: 150, remaining: 150, weight: 30 },
+    { id: 'p4', name: '부스 기념품', win: 'Y', total: -1, remaining: -1, weight: 63 }
+  ],
+  contents: [
+    { id: 'mes-pdf', solution: 'mes', type: 'pdf', title: 'XPERION MES 소개서', url: '' },
+    { id: 'mes-video', solution: 'mes', type: 'video', title: 'XPERION MES 소개 영상', url: '' },
+    { id: 'mes-link', solution: 'mes', type: 'link', title: 'XPERION MES 솔루션 페이지', url: HS_SOLUTION_PAGE + 'mes.do' },
+    { id: 'iot-pdf', solution: 'iot', type: 'pdf', title: 'XPERION IoT 소개서', url: '' },
+    { id: 'iot-video', solution: 'iot', type: 'video', title: 'XPERION IoT 소개 영상', url: '' },
+    { id: 'iot-link', solution: 'iot', type: 'link', title: 'XPERION IoT 솔루션 페이지', url: HS_SOLUTION_PAGE + 'iiot.do' },
+    { id: 'wms-pdf', solution: 'wms', type: 'pdf', title: 'XPERION WMS 소개서', url: '' },
+    { id: 'wms-video', solution: 'wms', type: 'video', title: 'XPERION WMS 소개 영상', url: '' },
+    { id: 'wms-link', solution: 'wms', type: 'link', title: 'XPERION WMS 솔루션 페이지', url: HS_SOLUTION_PAGE + 'wms.do' },
+    { id: 'plm-pdf', solution: 'plm', type: 'pdf', title: 'XPERION PLM 소개서', url: '' },
+    { id: 'plm-video', solution: 'plm', type: 'video', title: 'XPERION PLM 소개 영상', url: '' },
+    { id: 'haru-pdf', solution: 'haru', type: 'pdf', title: 'HARU 소개서', url: '' },
+    { id: 'haru-video', solution: 'haru', type: 'video', title: 'HARU 소개 영상', url: '' },
+    { id: 'haru-link', solution: 'haru', type: 'link', title: 'HARU 솔루션 페이지', url: HS_SOLUTION_PAGE + 'hrm.do' },
+    { id: 'tomms-pdf', solution: 'tomms', type: 'pdf', title: 'TOMMS 소개서', url: '' },
+    { id: 'tomms-video', solution: 'tomms', type: 'video', title: 'TOMMS 소개 영상', url: '' },
+    { id: 'tomms-link', solution: 'tomms', type: 'link', title: 'TOMMS 솔루션 페이지', url: HS_SOLUTION_PAGE + 'mro.do' },
+    { id: 'esg-pdf', solution: 'esg', type: 'pdf', title: 'ESG ON 소개서', url: '' },
+    { id: 'esg-video', solution: 'esg', type: 'video', title: 'ESG ON 소개 영상', url: '' },
+    { id: 'esg-link', solution: 'esg', type: 'link', title: 'ESG ON 솔루션 페이지', url: HS_SOLUTION_PAGE + 'esg.do' }
+  ]
+};
+
+/* ------------------------------ 작은 도구들 ------------------------------ */
+function hsNow() {
+  return new Date(Date.now() + 9 * 3600 * 1000).toISOString().replace('T', ' ').slice(0, 19); // 한국 시간
+}
+function hsPad(n, len) { var s = String(n); while (s.length < len) s = '0' + s; return s; }
+function hsErr(code, message) { return { ok: false, error: code, message: message }; }
+function hsClean(v, max) {
+  v = (v == null ? '' : String(v)).replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim();
+  v = v.replace(/^[=+\-@\s]+/, '');          // 스프레드시트 수식으로 해석되는 문자 제거
+  return v.slice(0, max || 100);
+}
+function hsPhone(v) {
+  var d = String(v == null ? '' : v).replace(/\D/g, '');
+  if (d.indexOf('82') === 0 && d.length >= 11) d = '0' + d.slice(2);
+  if (!/^01[016789]\d{7,8}$/.test(d)) return '';
+  return d.slice(0, 3) + '-' + d.slice(3, d.length - 4) + '-' + d.slice(-4);
+}
+function hsEmail(v) {
+  v = String(v == null ? '' : v).trim().toLowerCase().slice(0, 120);
+  return /^[^\s@,;<>()]+@[^\s@,;<>()]+\.[a-z]{2,}$/.test(v) ? v : '';
+}
+function hsRand(n) {
+  var s = ''; while (s.length < n) s += Math.floor(Math.random() * 0x100000000).toString(16);
+  return s.slice(0, n);
+}
+function hsCode() {
+  var L = 'ABCDEFGHJKLMNPQRSTUVWXYZ', A = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var s = L.charAt(Math.floor(Math.random() * L.length));
+  for (var i = 0; i < 3; i++) s += A.charAt(Math.floor(Math.random() * A.length));
+  return s;
+}
+function hsList(v) { return v ? String(v).split(',').filter(function (x) { return x; }) : []; }
+function hsMaskName(n) {
+  n = String(n || '');
+  if (n.length <= 1) return n + '*';
+  if (n.length === 2) return n.charAt(0) + '*';
+  return n.charAt(0) + new Array(n.length - 1).join('*') + n.charAt(n.length - 1);
+}
+function hsPhoneTail(p) { return String(p || '').slice(-4); }
+
+/* ------------------------------ 점수 계산 ------------------------------ */
+function hsScore(l) {
+  var S = HS_SCORE, parts = [];
+  function add(label, pts) { if (pts) parts.push({ label: label, pts: pts }); }
+  add('역할', S.role[l.role] || 0);
+  add('도입 시기', S.timeline[l.timeline] || 0);
+  add('회사 규모', S.companySize[l.companySize] || 0);
+  add('관심 솔루션', Math.min(hsList(l.interests).length * S.interestEach, S.interestMax));
+  add('상담 신청', l.consult === 'Y' ? S.consult : 0);
+  add('소개서 열람', Math.min((Number(l.pdfViews) || 0) * S.pdfEach, S.pdfMax));
+  add('영상 시청', Math.min((Number(l.videoViews) || 0) * S.videoEach, S.videoMax));
+  add('솔루션 페이지', Math.min((Number(l.linkViews) || 0) * S.linkEach, S.linkMax));
+  add('현장 스태프 평가', S.staff[l.staffRating] || 0);
+  var score = 0; parts.forEach(function (p) { score += p.pts; });
+  var grade = !l.surveyAt ? '' : (score >= HS_GRADE.hot ? 'Hot' : (score >= HS_GRADE.warm ? 'Warm' : 'Cold'));
+  return { score: score, grade: grade, parts: parts };
+}
+function hsRescore(l) { var r = hsScore(l); l.score = r.score; l.grade = r.grade; l.updatedAt = hsNow(); return l; }
+
+/* ------------------------------ 방문객 화면에 내려주는 상태 ------------------------------ */
+function hsState(lead, store) {
+  var wheel = store.getPrizes().map(function (p) { return { id: p.id, name: p.name, win: p.win === 'Y' }; });
+  var wins = store.getDraws().filter(function (d) { return d.leadId === lead.id && d.status !== '부재'; })
+    .map(function (d) { return { prize: d.prize, status: d.status, at: d.at }; });
+  return {
+    ok: true,
+    lead: {
+      leadId: lead.id, token: lead.token, entryNo: hsPad(lead.seq, 4), name: lead.name, company: lead.company,
+      surveyDone: !!lead.surveyAt, interests: hsList(lead.interests), consult: lead.consult === 'Y',
+      viewed: hsList(lead.viewed),
+      prize: lead.prizeId ? { id: lead.prizeId, name: lead.prizeName, win: lead.prizeWin === 'Y',
+        claimCode: lead.claimCode, claimed: !!lead.claimedAt } : null
+    },
+    contents: store.getContents(),
+    wheel: wheel,
+    drawWins: wins
+  };
+}
+function hsAuthLead(req, store) {
+  var id = String(req.leadId || ''), tk = String(req.token || '');
+  if (!/^L\d{1,7}$/.test(id) || !tk) return null;
+  var lead = store.findLeadBy('id', id);
+  return (lead && lead.token === tk) ? lead : null;
+}
+function hsPickPrize(prizes) {
+  var avail = prizes.filter(function (p) { return Number(p.remaining) !== 0 && Number(p.weight) > 0; });
+  if (!avail.length) return null;
+  var total = 0; avail.forEach(function (p) { total += Number(p.weight); });
+  var r = Math.random() * total;
+  for (var i = 0; i < avail.length; i++) { r -= Number(avail[i].weight); if (r < 0) return avail[i]; }
+  return avail[avail.length - 1];
+}
+
+/* ------------------------------ 요청 처리 ------------------------------ */
+function hsHandle(req, store) {
+  try {
+    req = req || {};
+    var a = String(req.action || '');
+    if (a === 'ping') return { ok: true, version: HS_VERSION, demo: !!store.isDemo };
+    if (a.indexOf('admin.') === 0) {
+      var key = String(store.getConfig().ADMIN_KEY || '');
+      if (!key || String(req.adminKey || '') !== key) return hsErr('auth', '운영자 비밀번호가 맞지 않습니다.');
+      return hsAdmin(a, req, store);
+    }
+    return hsPublic(a, req, store);
+  } catch (e) {
+    return hsErr('server', '처리 중 오류가 발생했습니다. (' + (e && e.message ? e.message : e) + ')');
+  }
+}
+
+function hsPublic(a, req, store) {
+  var lead;
+  if (a === 'register') {
+    var name = hsClean(req.name, 40), company = hsClean(req.company, 80);
+    var phone = hsPhone(req.phone), email = hsEmail(req.email);
+    if (!name) return hsErr('invalid', '이름을 입력해 주세요.');
+    if (!company) return hsErr('invalid', '회사명을 입력해 주세요.');
+    if (!email) return hsErr('invalid', '이메일 주소를 확인해 주세요.');
+    if (!phone) return hsErr('invalid', '휴대폰 번호를 확인해 주세요.');
+    if (req.consentPrivacy !== true) return hsErr('invalid', '개인정보 수집·이용에 동의해 주세요.');
+    var existing = store.findLeadBy('phone', phone);
+    if (existing) {                       // 같은 번호로 이미 등록 → 이어서 진행
+      var st = hsState(existing, store); st.resumed = true; return st;
+    }
+    if (String(store.getConfig().OPEN || 'Y') !== 'Y') return hsErr('closed', '지금은 이벤트 참여 시간이 아닙니다.');
+    var seq = store.nextSeq(), now = hsNow();
+    lead = {};
+    HS_LEAD_FIELDS.forEach(function (f) { lead[f] = ''; });
+    lead.id = 'L' + hsPad(seq, 4); lead.seq = seq; lead.token = 't' + hsRand(20); lead.createdAt = now;
+    lead.source = req.source === 'kiosk' ? 'kiosk' : 'qr';
+    lead.name = name; lead.company = company; lead.dept = hsClean(req.dept, 60); lead.title = hsClean(req.title, 40);
+    lead.email = email; lead.phone = phone;
+    lead.consentPrivacy = 'Y ' + now; lead.consentMarketing = req.consentMarketing === true ? 'Y ' + now : 'N';
+    lead.pdfViews = 0; lead.videoViews = 0; lead.linkViews = 0; lead.score = 0; lead.updatedAt = now;
+    store.appendLead(lead);
+    store.logEvent(lead.id, 'register', lead.source);
+    return hsState(lead, store);
+  }
+
+  lead = hsAuthLead(req, store);
+  if (!lead) return hsErr('session', '등록 정보를 찾을 수 없습니다. 다시 등록해 주세요.');
+
+  if (a === 'me') return hsState(lead, store);
+
+  if (a === 'survey') {
+    if (!lead.surveyAt) {
+      var ans = req.answers || {};
+      var ints = (Array.isArray(ans.interests) ? ans.interests : []).map(function (x) { return String(x); })
+        .filter(function (x, i, arr) { return /^[a-z0-9_-]{1,20}$/.test(x) && arr.indexOf(x) === i; }).slice(0, 12);
+      if (!ints.length) return hsErr('invalid', '관심 솔루션을 하나 이상 선택해 주세요.');
+      var pick = function (v) { v = String(v == null ? '' : v); return /^[a-z0-9_-]{1,20}$/.test(v) ? v : ''; };
+      lead.industry = pick(ans.industry); lead.companySize = pick(ans.companySize); lead.role = pick(ans.role);
+      lead.challenge = pick(ans.challenge); lead.timeline = pick(ans.timeline);
+      if (!lead.role || !lead.timeline || !lead.companySize || !lead.industry) return hsErr('invalid', '설문 문항을 모두 선택해 주세요.');
+      lead.interests = ints.join(','); lead.surveyAt = hsNow();
+      hsRescore(lead); store.saveLead(lead);
+      store.logEvent(lead.id, 'survey', lead.interests);
+    }
+    return hsState(lead, store);
+  }
+
+  if (a === 'spin') {
+    if (!lead.surveyAt) return hsErr('order', '설문을 먼저 완료해 주세요.');
+    if (!lead.prizeId) {
+      var prize = hsPickPrize(store.getPrizes());
+      if (prize) {
+        if (Number(prize.remaining) > 0) { prize.remaining = Number(prize.remaining) - 1; store.savePrize(prize); }
+        lead.prizeId = prize.id; lead.prizeName = prize.name; lead.prizeWin = prize.win === 'Y' ? 'Y' : 'N';
+      } else {
+        lead.prizeId = 'none'; lead.prizeName = '준비한 경품이 모두 소진되었습니다'; lead.prizeWin = 'N';
+      }
+      if (lead.prizeWin === 'Y') {
+        var code = hsCode(), tries = 0;
+        while (store.findLeadBy('claimCode', code) && tries++ < 8) code = hsCode();
+        lead.claimCode = code;
+      }
+      lead.prizeAt = hsNow(); lead.updatedAt = lead.prizeAt;
+      store.saveLead(lead);
+      store.logEvent(lead.id, 'spin', lead.prizeName);
+    }
+    return hsState(lead, store);
+  }
+
+  if (a === 'track') {
+    var cid = String(req.contentId || '');
+    var content = store.getContents().filter(function (c) { return c.id === cid; })[0];
+    if (!content) return hsErr('invalid', '자료를 찾을 수 없습니다.');
+    var viewed = hsList(lead.viewed);
+    if (viewed.indexOf(cid) < 0) {
+      viewed.push(cid); lead.viewed = viewed.join(',');
+      if (content.type === 'pdf') lead.pdfViews = (Number(lead.pdfViews) || 0) + 1;
+      else if (content.type === 'video') lead.videoViews = (Number(lead.videoViews) || 0) + 1;
+      else lead.linkViews = (Number(lead.linkViews) || 0) + 1;
+      hsRescore(lead); store.saveLead(lead);
+      store.logEvent(lead.id, 'view', cid);
+    }
+    return { ok: true, viewed: viewed };
+  }
+
+  if (a === 'consult') {
+    lead.consult = 'Y';
+    if (!lead.consultAt) lead.consultAt = hsNow();
+    lead.consultMemo = hsClean(req.memo, 500);
+    hsRescore(lead); store.saveLead(lead);
+    store.logEvent(lead.id, 'consult', lead.consultMemo);
+    return hsState(lead, store);
+  }
+
+  return hsErr('unknown', '알 수 없는 요청입니다.');
+}
+
+function hsAdminLead(l) { var o = {}; HS_LEAD_FIELDS.forEach(function (f) { if (f !== 'token') o[f] = l[f]; }); return o; }
+
+function hsAdmin(a, req, store) {
+  var lead, draws;
+  if (a === 'admin.login') return { ok: true, demo: !!store.isDemo };
+
+  if (a === 'admin.data') {
+    return {
+      ok: true, demo: !!store.isDemo, serverTime: hsNow(), open: String(store.getConfig().OPEN || 'Y'),
+      leads: store.getLeads().map(hsAdminLead), prizes: store.getPrizes(), draws: store.getDraws(),
+      contents: store.getContents()
+    };
+  }
+
+  if (a === 'admin.open') {
+    store.setConfig('OPEN', req.open === 'N' ? 'N' : 'Y');
+    return { ok: true, open: req.open === 'N' ? 'N' : 'Y' };
+  }
+
+  if (a === 'admin.claim') {
+    var code = String(req.code || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (code.length !== 4) return hsErr('invalid', '수령 코드 4자리를 입력해 주세요.');
+    lead = store.findLeadBy('claimCode', code);
+    if (!lead) return hsErr('notfound', '해당 코드의 당첨 내역이 없습니다.');
+    var already = !!lead.claimedAt;
+    if (req.confirm === true && !already) {
+      lead.claimedAt = hsNow(); lead.updatedAt = lead.claimedAt; store.saveLead(lead);
+      store.logEvent(lead.id, 'claim', lead.prizeName);
+    }
+    return { ok: true, already: already, lead: hsAdminLead(lead) };
+  }
+
+  if (a === 'admin.lead.update') {
+    lead = store.findLeadBy('id', String(req.leadId || ''));
+    if (!lead) return hsErr('notfound', '리드를 찾을 수 없습니다.');
+    if (req.staffRating != null) lead.staffRating = /^[ABC]$/.test(req.staffRating) ? req.staffRating : '';
+    if (req.staffNote != null) lead.staffNote = hsClean(req.staffNote, 500);
+    if (req.salesStatus != null) lead.salesStatus = ['', 'SQL 후보', 'SQL 전환', '제외'].indexOf(req.salesStatus) >= 0 ? req.salesStatus : '';
+    hsRescore(lead); store.saveLead(lead);
+    return { ok: true, lead: hsAdminLead(lead) };
+  }
+
+  if (a === 'admin.draw') {
+    var prizeName = hsClean(req.prize, 60) || '현장 추첨';
+    var count = Math.max(1, Math.min(50, parseInt(req.count, 10) || 1));
+    draws = store.getDraws();
+    var won = {};
+    draws.forEach(function (d) { if (d.status !== '부재') won[d.leadId] = true; if (d.prize === prizeName) won[d.leadId] = true; });
+    var pool = store.getLeads().filter(function (l) {
+      if (req.pool !== 'all' && !l.surveyAt) return false;
+      if (l.salesStatus === '제외') return false;
+      return !won[l.id];
+    });
+    if (!pool.length) return hsErr('empty', '추첨 대상자가 없습니다.');
+    var picked = [], now = hsNow();
+    for (var i = 0; i < count && pool.length; i++) {
+      var w = pool.splice(Math.floor(Math.random() * pool.length), 1)[0];
+      var d = { id: 'D' + hsPad(draws.length + picked.length + 1, 3), at: now, prize: prizeName, leadId: w.id,
+        seq: w.seq, name: w.name, company: w.company, phone: w.phone, status: '당첨' };
+      store.appendDraw(d); picked.push(d);
+    }
+    store.logEvent('', 'draw', prizeName + ' ' + picked.length + '명');
+    return { ok: true, winners: picked, poolSize: pool.length + picked.length };
+  }
+
+  if (a === 'admin.draw.update') {
+    var target = store.getDraws().filter(function (d) { return d.id === String(req.drawId || ''); })[0];
+    if (!target) return hsErr('notfound', '추첨 내역을 찾을 수 없습니다.');
+    target.status = ['당첨', '수령', '부재'].indexOf(req.status) >= 0 ? req.status : '당첨';
+    store.saveDraw(target);
+    return { ok: true, draw: target };
+  }
+
+  if (a === 'admin.seedDemo' || a === 'admin.resetDemo') {
+    if (!store.isDemo) return hsErr('forbidden', '데모 모드에서만 쓸 수 있습니다.');
+    if (a === 'admin.resetDemo') { store.reset(); return { ok: true }; }
+    return { ok: true, added: hsSeedDemoLeads(store, Math.max(1, Math.min(600, parseInt(req.n, 10) || 200))) };
+  }
+
+  return hsErr('unknown', '알 수 없는 요청입니다.');
+}
+
+/* ------------------------------ 데모용 샘플 리드 ------------------------------ */
+function hsSeedDemoLeads(store, n) {
+  var fam = '김이박최정강조윤장임한오서신권황안송류홍'.split('');
+  var giv = ['민준', '서연', '도윤', '지우', '하준', '수아', '주원', '지민', '예준', '서현', '시우', '하은', '준서', '유진', '현우', '채원', '지호', '다은', '건우', '소율'];
+  var co = ['샘플정밀', '예시전자', '가상화학', '데모물류', '테스트중공업', '샘플에너지', '예시소재', '가상모빌리티', '데모바이오', '테스트금융'];
+  var titles = ['사원', '대리', '과장', '차장', '부장', '팀장', '이사', '상무'];
+  var depts = ['생산기술팀', 'IT기획팀', '스마트팩토리TF', '물류혁신팀', '인사팀', 'ESG경영팀', '설비보전팀', 'DX추진실'];
+  var W = function (pairs) { var t = 0, i; for (i = 0; i < pairs.length; i++) t += pairs[i][1]; var r = Math.random() * t;
+    for (i = 0; i < pairs.length; i++) { r -= pairs[i][1]; if (r < 0) return pairs[i][0]; } return pairs[0][0]; };
+  var R = function (arr) { return arr[Math.floor(Math.random() * arr.length)]; };
+  var sols = ['mes', 'iot', 'wms', 'plm', 'haru', 'tomms', 'esg'];
+  var contents = store.getContents(), added = 0;
+  for (var k = 0; k < n; k++) {
+    var seq = store.nextSeq();
+    var hr = W([[9, 3], [10, 8], [11, 10], [12, 5], [13, 7], [14, 11], [15, 9], [16, 6], [17, 3]]);   // 전시장 방문이 몰리는 시간대 흉내
+    var at = hsNow().slice(0, 10) + ' ' + hsPad(hr, 2) + ':' + hsPad(Math.floor(Math.random() * 60), 2) + ':' + hsPad(Math.floor(Math.random() * 60), 2);
+    var l = {}; HS_LEAD_FIELDS.forEach(function (f) { l[f] = ''; });
+    l.id = 'L' + hsPad(seq, 4); l.seq = seq; l.token = 't' + hsRand(20); l.createdAt = at; l.source = 'qr';
+    l.name = R(fam) + R(giv); l.company = R(co) + ' ' + String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    l.dept = R(depts); l.title = R(titles);
+    l.email = 'sample' + hsPad(seq, 4) + '@example.com'; l.phone = '010-0000-' + hsPad(seq % 10000, 4);
+    l.consentPrivacy = 'Y ' + at; l.consentMarketing = Math.random() < 0.6 ? 'Y ' + at : 'N';
+    l.pdfViews = 0; l.videoViews = 0; l.linkViews = 0; l.score = 0;
+    if (Math.random() < 0.9) {
+      l.surveyAt = at;
+      l.industry = W([['defense', 2], ['electronics', 3], ['chemical', 2], ['machinery', 3], ['logistics', 2], ['finance', 1], ['public', 1], ['etc', 1]]);
+      l.companySize = W([['s0', 3], ['s50', 4], ['s300', 3], ['s1000', 2]]);
+      l.role = W([['decision', 1], ['evaluate', 3], ['user', 5], ['research', 5], ['other', 2]]);
+      l.timeline = W([['m3', 1], ['m6', 2], ['y1', 4], ['undecided', 7], ['none', 4]]);
+      l.challenge = W([['visibility', 3], ['equipment', 3], ['logistics', 2], ['product', 1], ['hr', 1], ['esg', 2], ['etc', 1]]);
+      var ints = sols.filter(function () { return Math.random() < 0.3; }); if (!ints.length) ints = [R(sols)];
+      l.interests = ints.join(',');
+      var p = hsPickPrize(store.getPrizes());
+      if (p) { if (Number(p.remaining) > 0) { p.remaining = Number(p.remaining) - 1; store.savePrize(p); }
+        l.prizeId = p.id; l.prizeName = p.name; l.prizeWin = p.win; l.claimCode = hsCode(); l.prizeAt = at;
+        if (Math.random() < 0.7) l.claimedAt = at; }
+      var seen = contents.filter(function (c) { return ints.indexOf(c.solution) >= 0 && Math.random() < 0.35; });
+      l.viewed = seen.map(function (c) { return c.id; }).join(',');
+      seen.forEach(function (c) { if (c.type === 'pdf') l.pdfViews++; else if (c.type === 'video') l.videoViews++; else l.linkViews++; });
+      var hotish = (l.role === 'decision' || l.role === 'evaluate') && (l.timeline === 'm3' || l.timeline === 'm6');
+      if (Math.random() < (hotish ? 0.45 : 0.04)) { l.consult = 'Y'; l.consultAt = at; l.consultMemo = '도입 일정과 구축 사례 문의'; }
+    }
+    hsRescore(l); l.updatedAt = at;
+    store.appendLead(l); added++;
+  }
+  return added;
+}
+
+/* ------------------------------ 메모리 저장소 (데모 모드·테스트용) ------------------------------ */
+function hsMemStore(load, save) {
+  function fresh() {
+    return { leads: [], prizes: JSON.parse(JSON.stringify(HS_SEED.prizes)), contents: JSON.parse(JSON.stringify(HS_SEED.contents)),
+      draws: [], events: [], config: { ADMIN_KEY: '0000', OPEN: 'Y' } };
+  }
+  var db = load() || fresh();
+  function commit() { save(db); }
+  function copy(o) { return JSON.parse(JSON.stringify(o)); }
+  return {
+    isDemo: true,
+    reset: function () { db = fresh(); commit(); },
+    getConfig: function () { return db.config; },
+    setConfig: function (k, v) { db.config[k] = v; commit(); },
+    getLeads: function () { return copy(db.leads); },
+    findLeadBy: function (field, value) {
+      for (var i = 0; i < db.leads.length; i++) if (String(db.leads[i][field]) === String(value)) return copy(db.leads[i]);
+      return null;
+    },
+    nextSeq: function () { var m = 0; db.leads.forEach(function (l) { if (Number(l.seq) > m) m = Number(l.seq); }); return m + 1; },
+    appendLead: function (l) { db.leads.push(copy(l)); commit(); },
+    saveLead: function (l) {
+      for (var i = 0; i < db.leads.length; i++) if (db.leads[i].id === l.id) { db.leads[i] = copy(l); commit(); return; }
+    },
+    getPrizes: function () { return copy(db.prizes); },
+    savePrize: function (p) { for (var i = 0; i < db.prizes.length; i++) if (db.prizes[i].id === p.id) { db.prizes[i] = copy(p); commit(); return; } },
+    getContents: function () { return copy(db.contents); },
+    getDraws: function () { return copy(db.draws); },
+    appendDraw: function (d) { db.draws.push(copy(d)); commit(); },
+    saveDraw: function (d) { for (var i = 0; i < db.draws.length; i++) if (db.draws[i].id === d.id) { db.draws[i] = copy(d); commit(); return; } },
+    logEvent: function (leadId, kind, detail) { db.events.push({ at: hsNow(), leadId: leadId, kind: kind, detail: detail }); if (db.events.length > 3000) db.events.shift(); }
+  };
+}
+
+/* ==========================================================================
+ * 브라우저 전용 구간 - 서버 호출 (API_URL 이 비어 있으면 데모 모드로 동작)
+ * ========================================================================== */
+var HS_CFG = window.EVENT_CONFIG || {};
+var HS_API_URL = String(HS_CFG.API_URL || '').trim();
+var HS_DEMO_KEY = 'hsict_demo_db_v1';
+var hsDemoStore = null;
+
+var hsDemoMem = null;
+var hsDemoStorageOk = true;
+function hsGetDemoStore() {
+  if (hsDemoStore) return hsDemoStore;
+  hsDemoStore = hsMemStore(function () {
+    if (!hsDemoStorageOk) return hsDemoMem;
+    try { var raw = localStorage.getItem(HS_DEMO_KEY); return raw ? JSON.parse(raw) : null; }
+    catch (e) { hsDemoStorageOk = false; return hsDemoMem; }
+  }, function (db) {
+    hsDemoMem = db;
+    try { localStorage.setItem(HS_DEMO_KEY, JSON.stringify(db)); } catch (e) { /* 저장 불가 환경: 메모리로만 유지 */ }
+  });
+  return hsDemoStore;
+}
+
+function hsCall(action, payload) {
+  var req = { action: action };
+  Object.keys(payload || {}).forEach(function (k) { req[k] = payload[k]; });
+  if (!HS_API_URL) {
+    return new Promise(function (resolve) {
+      setTimeout(function () {
+        hsDemoStore = null;                               // 다른 탭(운영자 화면)의 변경을 반영하려고 매번 다시 읽음
+        resolve(JSON.parse(JSON.stringify(hsHandle(req, hsGetDemoStore()))));
+      }, 250);
+    });
+  }
+  var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+  var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 30000);
+  return fetch(HS_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },   // Apps Script 는 text/plain 으로 보내야 사전 요청(preflight) 없이 통과
+    body: JSON.stringify(req),
+    redirect: 'follow',
+    signal: ctrl ? ctrl.signal : undefined
+  }).then(function (r) {
+    clearTimeout(timer);
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }).catch(function (e) {
+    clearTimeout(timer);
+    return { ok: false, error: 'network', message: '연결이 원활하지 않습니다. 잠시 후 다시 시도해 주세요.' };
+  });
+}
+
+window.HSApi = {
+  call: hsCall,
+  isDemo: !HS_API_URL,
+  score: hsScore,
+  grade: HS_GRADE,
+  maskName: hsMaskName,
+  phoneTail: hsPhoneTail,
+  pad: hsPad,
+  list: hsList
+};
+
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  var CFG = window.EVENT_CONFIG, API = window.HSApi, EV = CFG.event;
+  var KIOSK = /[?&]kiosk=1/.test(location.search);
+  var SKEY = 'hsict_session_v1';
+  var app = document.getElementById('app'), scrim = document.getElementById('scrim'), sheet = document.getElementById('sheet');
+  var S = { view: 'loading', lead: null, contents: [], wheel: [], drawWins: [], step: 0, answers: { interests: [] }, showAll: false, spun: false, busy: false };
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function $(sel, root) { return (root || document).querySelector(sel); }
+  function sol(id) { return CFG.solutions.filter(function (s) { return s.id === id; })[0]; }
+  function toast(msg) { var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function () { t.classList.remove('on'); }, 2800); }
+
+  /* ---------- 세션 (같은 폰으로 다시 들어오면 이어서) ---------- */
+  var memSession = null;
+  function saveSession() {
+    memSession = { leadId: S.lead.leadId, token: S.lead.token };
+    if (KIOSK) return;
+    try { localStorage.setItem(SKEY, JSON.stringify(memSession)); } catch (e) {}
+  }
+  function loadSession() {
+    if (KIOSK) return memSession;
+    try { return JSON.parse(localStorage.getItem(SKEY)) || memSession; } catch (e) { return memSession; }
+  }
+  function clearSession() { memSession = null; try { localStorage.removeItem(SKEY); } catch (e) {} }
+  function auth() { return { leadId: S.lead.leadId, token: S.lead.token }; }
+
+  function applyState(res) {
+    S.lead = res.lead; S.contents = res.contents || []; S.wheel = res.wheel || []; S.drawWins = res.drawWins || [];
+    saveSession();
+  }
+  function routeByLead() {
+    if (!S.lead.surveyDone) { S.view = 'survey'; S.step = 0; }
+    else if (!S.lead.prize) S.view = 'spin';
+    else S.view = 'home';
+    render();
+  }
+
+  /* ---------- 화면 ---------- */
+  function render() {
+    var v = S.view;
+    app.innerHTML = v === 'intro' ? viewIntro() : v === 'register' ? viewRegister() : v === 'survey' ? viewSurvey()
+      : v === 'spin' ? viewSpin() : v === 'home' ? viewHome() : '<div class="loading">불러오는 중입니다</div>';
+    window.scrollTo(0, 0);
+    var h = app.querySelector('h1, h2'); if (h) { h.setAttribute('tabindex', '-1'); }
+  }
+
+  function viewIntro() {
+    return '<h1>' + esc(EV.headline) + '</h1>' +
+      '<p class="lede">' + esc(EV.sub) + '</p>' + (EV.dates ? '<p class="muted">' + esc(EV.dates) + '</p>' : '') +
+      '<ol class="steps">' +
+      '<li><span class="n">1</span><div><b>방문 등록</b><span>이름과 연락처를 입력합니다</span></div></li>' +
+      '<li><span class="n">2</span><div><b>설문 ' + CFG.survey.length + '문항</b><span>보기를 누르기만 하면 됩니다</span></div></li>' +
+      '<li><span class="n">3</span><div><b>즉석 경품</b><span>룰렛을 돌려 바로 확인합니다</span></div></li>' +
+      '<li><span class="n">4</span><div><b>맞춤 자료와 현장 추첨</b><span>관심 솔루션 자료를 보고, 추첨에 자동 응모됩니다</span></div></li>' +
+      '</ol><div class="spacer"></div>' +
+      '<button class="btn" data-act="start">방문 등록 시작</button>';
+  }
+
+  function viewRegister() {
+    var c = CFG.consent;
+    function li(arr) { return '<ul>' + arr.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; }
+    return '<h2>방문 등록</h2><p class="muted">이미 등록하셨다면 같은 휴대폰 번호를 입력해 이어서 진행할 수 있습니다.</p>' +
+      '<form id="regform" novalidate style="margin-top:16px">' +
+      '<div class="field"><label for="f-name">이름 <i>필수</i></label><input id="f-name" name="name" autocomplete="name" maxlength="40" required></div>' +
+      '<div class="field"><label for="f-company">회사명 <i>필수</i></label><input id="f-company" name="company" autocomplete="organization" maxlength="80" required></div>' +
+      '<div class="row2">' +
+      '<div class="field"><label for="f-dept">부서</label><input id="f-dept" name="dept" maxlength="60"></div>' +
+      '<div class="field"><label for="f-title">직책</label><input id="f-title" name="title" autocomplete="organization-title" maxlength="40"></div>' +
+      '</div>' +
+      '<div class="field"><label for="f-email">이메일 <i>필수</i></label><input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120" required></div>' +
+      '<div class="field"><label for="f-phone">휴대폰 번호 <i>필수</i></label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="010-0000-0000" required></div>' +
+      '<div class="consent">' +
+      '<div class="item"><label class="check"><input type="checkbox" id="c-all"> 전체 동의</label></div>' +
+      '<div class="item"><label class="check"><input type="checkbox" id="c-privacy"> ' + esc(c.privacyTitle) + '</label><details><summary>내용 보기</summary>' + li(c.privacyBody) + '</details></div>' +
+      '<div class="item"><label class="check"><input type="checkbox" id="c-marketing"> ' + esc(c.marketingTitle) + '</label><details><summary>내용 보기</summary>' + li(c.marketingBody) + '</details></div>' +
+      '</div>' +
+      '<div class="err" id="regerr" role="alert"></div>' +
+      '<button class="btn" type="submit" id="regbtn">등록하고 설문 시작</button>' +
+      '</form>';
+  }
+
+  function surveyOptions(q) {
+    if (q.fromSolutions) return CFG.solutions.map(function (s) { return { id: s.id, label: s.name, sub: s.tagline }; });
+    return q.options;
+  }
+  function viewSurvey() {
+    var qs = CFG.survey, q = qs[S.step], a = S.answers;
+    var bars = qs.map(function (_, i) { return '<i class="' + (i <= S.step ? 'on' : '') + '"></i>'; }).join('');
+    var opts = surveyOptions(q).map(function (o) {
+      var on = q.multi ? (a[q.key] || []).indexOf(o.id) >= 0 : a[q.key] === o.id;
+      return '<button type="button" class="opt' + (on ? ' on' : '') + '" data-act="opt" data-id="' + esc(o.id) + '" aria-pressed="' + on + '">' +
+        esc(o.label) + (o.sub ? '<small>' + esc(o.sub) + '</small>' : '') + '</button>';
+    }).join('');
+    var last = S.step === qs.length - 1;
+    var canNext = q.multi ? (a[q.key] || []).length > 0 : !!a[q.key];
+    return '<div class="progress" aria-hidden="true">' + bars + '</div>' +
+      '<div class="qno">' + (S.step + 1) + ' / ' + qs.length + '</div>' +
+      '<h2>' + esc(q.q) + '</h2>' + (q.multi ? '<p class="muted">여러 개를 고를 수 있습니다.</p>' : '') +
+      '<div class="opts">' + opts + '</div>' +
+      '<div class="err" id="surverr" role="alert"></div><div class="spacer"></div>' +
+      ((q.multi || last || canNext) ? '<button class="btn" data-act="next" id="nextbtn"' + (canNext ? '' : ' disabled') + '>' + (last ? '설문 제출하고 경품 받기' : '다음') + '</button>' : '') +
+      (S.step > 0 ? '<button class="linkbtn" data-act="prev">이전 문항</button>' : '');
+  }
+
+  /* 룰렛: 칸 수가 적으면 같은 구성을 반복해 6칸 이상(짝수)으로 만든다 */
+  function wheelSegs() {
+    var list = S.wheel.length ? S.wheel : [{ id: 'none', name: '경품' }], segs = list.slice();
+    while (segs.length < 6 || segs.length % 2) segs = segs.concat(list);
+    return segs;
+  }
+  function wheelSvg() {
+    var segs = wheelSegs(), n = segs.length, step = 360 / n, R = 150, C = 160, out = '';
+    function pt(deg, r) { var a = deg * Math.PI / 180; return (C + r * Math.sin(a)).toFixed(2) + ' ' + (C - r * Math.cos(a)).toFixed(2); }
+    segs.forEach(function (s, i) {
+      var a0 = i * step, a1 = a0 + step, mid = a0 + step / 2;
+      var top = S.wheel.length && s.id === S.wheel[0].id;
+      var fill = top ? '#F37321' : (i % 2 ? '#FFFFFF' : '#18212F'), ink = top ? '#151A22' : (i % 2 ? '#151A22' : '#FFFFFF');
+      out += '<path d="M' + C + ' ' + C + ' L' + pt(a0, R) + ' A' + R + ' ' + R + ' 0 0 1 ' + pt(a1, R) + ' Z" fill="' + fill + '" stroke="#18212F" stroke-width="1.5"/>';
+      out += '<text x="' + (C + R * 0.93) + '" y="' + C + '" text-anchor="end" dominant-baseline="middle" font-size="' + (n > 10 ? 11 : 13.5) + '" font-weight="700" fill="' + ink + '" transform="rotate(' + (mid - 90) + ' ' + C + ' ' + C + ')">' + esc(s.name) + '</text>';
+    });
+    return '<svg id="wheel" viewBox="0 0 320 320" role="img" aria-label="경품 룰렛">' +
+      '<circle cx="160" cy="160" r="157" fill="#18212F"/>' + out + '<circle cx="160" cy="160" r="20" fill="#18212F" stroke="#fff" stroke-width="3"/></svg>';
+  }
+  function viewSpin() {
+    return '<h2>즉석 경품 룰렛</h2><p class="muted">설문에 참여해 주셔서 감사합니다. 룰렛은 한 번만 돌릴 수 있습니다.</p>' +
+      '<div class="wheelbox"><div class="pointer" aria-hidden="true"></div>' + wheelSvg() + '</div>' +
+      '<div class="err" id="spinerr" role="alert"></div>' +
+      '<div id="spinout" aria-live="polite"></div><div class="spacer"></div>' +
+      '<button class="btn" data-act="spin" id="spinbtn">룰렛 돌리기</button>';
+  }
+
+  function prizeCard() {
+    var p = S.lead.prize;
+    if (!p) return '';
+    if (!p.win) return '<div class="card"><h3>즉석 경품</h3><p class="muted" style="margin:6px 0 0">' + esc(p.name) + '</p></div>';
+    return '<div class="card win"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h3>즉석 경품: ' + esc(p.name) + '</h3>' +
+      (p.claimed ? '<span class="tag">수령 완료</span>' : '') + '</div>' +
+      (p.claimed ? '' : '<p class="muted" style="margin:10px 0 2px">수령 코드</p><div class="code">' + esc(p.claimCode) + '</div><p class="muted" style="margin:8px 0 0">부스 스태프에게 이 화면을 보여 주세요.</p>') + '</div>';
+  }
+  function materialRow(c) {
+    var seen = S.lead.viewed.indexOf(c.id) >= 0;
+    var kind = c.type === 'pdf' ? 'PDF' : c.type === 'video' ? '영상' : '웹';
+    var inner = '<span class="kind">' + kind + '</span><span class="t">' + esc(c.title) + '</span>' + (seen ? '<span class="seen">열람함</span>' : '');
+    var inline = c.type === 'video' && playable(c.url);
+    if (c.url && !inline) return '<a class="mat" href="' + esc(c.url) + '" target="_blank" rel="noopener" data-act="track" data-id="' + esc(c.id) + '">' + inner + '</a>';
+    return '<button type="button" class="mat" data-act="open" data-id="' + esc(c.id) + '">' + inner + '</button>';
+  }
+  function solutionBlock(id) {
+    var s = sol(id); if (!s) return '';
+    var items = S.contents.filter(function (c) { return c.solution === id && (c.url || API.isDemo); });
+    return '<section class="sol"><header><h3>' + esc(s.name) + '</h3><p>' + esc(s.desc) + '</p></header>' +
+      (items.length ? items.map(materialRow).join('') : '<div class="mat"><span class="t muted">자료를 준비하고 있습니다. 부스에서 직접 안내해 드립니다.</span></div>') + '</section>';
+  }
+  function viewHome() {
+    var L = S.lead, mine = L.interests.filter(sol);
+    var others = CFG.solutions.map(function (s) { return s.id; }).filter(function (id) { return mine.indexOf(id) < 0; });
+    var wins = S.drawWins.map(function (w) {
+      return '<div class="card win"><h3>현장 추첨 당첨: ' + esc(w.prize) + '</h3><p class="muted" style="margin:6px 0 0">' +
+        (w.status === '수령' ? '경품을 수령하셨습니다.' : '부스 스태프에게 이 화면을 보여 주세요.') + '</p></div>';
+    }).join('');
+    return '<div class="pass"><div class="lbl">현장 추첨 응모 번호</div><div class="no">' + esc(L.entryNo) + '</div>' +
+      '<div class="who">' + esc(L.name) + '</div><div class="co">' + esc(L.company) + '</div>' +
+      '<div class="cut"></div><p class="note">' + esc(EV.drawInfo) + '</p></div>' +
+      wins + prizeCard() +
+      '<div class="sec"><h2>관심 솔루션 자료</h2><p class="muted">선택하신 솔루션의 소개서와 영상입니다.</p>' + mine.map(solutionBlock).join('') + '</div>' +
+      (others.length ? (S.showAll ? '<div class="sec"><h2>다른 솔루션</h2>' + others.map(solutionBlock).join('') + '</div>'
+        : '<div style="margin-top:14px"><button class="btn ghost" data-act="more">다른 솔루션 자료도 보기</button></div>') : '') +
+      '<div class="sec"><h2>전문가 상담</h2>' +
+      (L.consult ? '<div class="card"><span class="tag">상담 신청 완료</span><p style="margin:10px 0 0">담당자가 등록하신 연락처로 연락드립니다.</p><button class="linkbtn" data-act="consult">문의 내용 수정</button></div>'
+        : '<p class="muted">도입 일정, 구축 사례, 견적이 궁금하시면 담당자가 직접 연락드립니다.</p><div style="margin-top:12px"><button class="btn dark" data-act="consult">상담 신청하기</button></div>') +
+      '</div>' +
+      '<div style="margin-top:26px;text-align:center"><button class="linkbtn" data-act="refresh">추첨 결과 새로 고침</button>' +
+      (KIOSK ? '<div style="margin-top:8px"><button class="btn ghost" data-act="reset">다음 방문객 등록</button></div>' : '') + '</div>';
+  }
+
+  /* ---------- 자료 열기 ---------- */
+  function youtubeId(url) { var m = /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{6,})/.exec(url || ''); return m ? m[1] : ''; }
+  function playable(url) { return !!youtubeId(url) || /\.(mp4|webm|mov)(\?|#|$)/i.test(url || ''); }
+  function track(id) {
+    if (S.lead.viewed.indexOf(id) < 0) S.lead.viewed.push(id);
+    API.call('track', Object.assign({ contentId: id }, auth()));
+    var el = app.querySelector('[data-id="' + id + '"]');
+    if (el && !el.querySelector('.seen')) el.insertAdjacentHTML('beforeend', '<span class="seen">열람함</span>');
+  }
+  function openContent(id) {
+    var c = S.contents.filter(function (x) { return x.id === id; })[0]; if (!c) return;
+    track(id);
+    var body;
+    if (!c.url) body = '<p class="muted">데모 모드에서는 자료 대신 이 안내가 열립니다. 구글 시트의 Contents 탭에 링크를 넣으면 실제 자료가 열립니다.</p>';
+    else if (youtubeId(c.url)) body = '<iframe class="player" src="https://www.youtube-nocookie.com/embed/' + esc(youtubeId(c.url)) + '?playsinline=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="' + esc(c.title) + '"></iframe>';
+    else body = '<video class="player" src="' + esc(c.url) + '" controls playsinline preload="metadata"></video>';
+    openSheet('<button class="close" data-act="close">닫기</button><h2>' + esc(c.title) + '</h2>' + body);
+  }
+  function openSheet(html) { sheet.innerHTML = html; scrim.classList.add('on'); var f = sheet.querySelector('textarea, button'); if (f) f.focus(); }
+  function closeSheet() { scrim.classList.remove('on'); sheet.innerHTML = ''; }
+
+  function openConsult() {
+    var names = S.lead.interests.map(function (id) { var s = sol(id); return s ? s.name : ''; }).filter(Boolean).join(', ');
+    openSheet('<button class="close" data-act="close">닫기</button><h2>상담 신청</h2>' +
+      '<p class="muted">등록하신 연락처로 담당자가 연락드립니다.' + (names ? ' 관심 솔루션: ' + esc(names) : '') + '</p>' +
+      '<div class="field" style="margin-top:14px"><label for="c-memo">궁금한 점 (선택)</label><textarea id="c-memo" rows="4" maxlength="500" placeholder="예: 공장 2곳에 MES 도입 검토 중, 구축 기간 문의"></textarea></div>' +
+      '<div class="err" id="conserr" role="alert"></div><button class="btn" data-act="consult-send" id="consbtn">상담 신청 보내기</button>');
+  }
+
+  /* ---------- 동작 ---------- */
+  function busy(btn, on, label) { if (!btn) return; if (on) { btn.dataset.label = btn.textContent; btn.textContent = label || '처리 중입니다'; btn.disabled = true; } else { btn.textContent = btn.dataset.label || btn.textContent; btn.disabled = false; } }
+
+  function submitRegister(form) {
+    var err = $('#regerr'), btn = $('#regbtn'), v = function (n) { return form.elements[n].value.trim(); };
+    err.textContent = '';
+    if (!v('name')) { err.textContent = '이름을 입력해 주세요.'; form.elements.name.focus(); return; }
+    if (!v('company')) { err.textContent = '회사명을 입력해 주세요.'; form.elements.company.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v('email'))) { err.textContent = '이메일 주소를 확인해 주세요.'; form.elements.email.focus(); return; }
+    if (!/^01[016789]\d{7,8}$/.test(v('phone').replace(/\D/g, ''))) { err.textContent = '휴대폰 번호를 확인해 주세요. 예: 010-1234-5678'; form.elements.phone.focus(); return; }
+    if (!$('#c-privacy').checked) { err.textContent = '개인정보 수집·이용에 동의해 주세요.'; $('#c-privacy').focus(); return; }
+    busy(btn, true, '등록하는 중입니다');
+    API.call('register', { name: v('name'), company: v('company'), dept: v('dept'), title: v('title'), email: v('email'), phone: v('phone'),
+      consentPrivacy: true, consentMarketing: $('#c-marketing').checked, source: KIOSK ? 'kiosk' : 'qr' }).then(function (res) {
+      if (!res.ok) { busy(btn, false); err.textContent = res.message; return; }
+      applyState(res);
+      if (res.resumed) toast('이미 등록된 번호입니다. 이어서 진행합니다.');
+      routeByLead();
+    });
+  }
+
+  function submitSurvey() {
+    var btn = $('#nextbtn'), err = $('#surverr');
+    busy(btn, true, '제출하는 중입니다');
+    API.call('survey', Object.assign({ answers: S.answers }, auth())).then(function (res) {
+      if (!res.ok) { busy(btn, false); err.textContent = res.message; return; }
+      applyState(res); routeByLead();
+    });
+  }
+
+  function doSpin() {
+    var btn = $('#spinbtn'), err = $('#spinerr');
+    err.textContent = ''; busy(btn, true, '추첨하는 중입니다');
+    API.call('spin', auth()).then(function (res) {
+      if (!res.ok) { busy(btn, false); err.textContent = res.message; return; }
+      var prize = res.lead.prize, segs = wheelSegs(), n = segs.length, step = 360 / n, idx = -1;
+      segs.forEach(function (s, i) { if (idx < 0 && s.id === prize.id) idx = i; });
+      if (idx < 0) idx = 0;
+      var target = 360 * 6 - (idx * step + step / 2) + (Math.random() - 0.5) * step * 0.5;
+      var svg = $('#wheel'), done = false;
+      function finish() {
+        if (done) return; done = true;
+        applyState(res);
+        $('#spinout').innerHTML = '<div class="result">' + (prize.win
+          ? '<div class="muted">당첨되셨습니다</div><div class="prize">' + esc(prize.name) + '</div><div class="muted">수령 코드</div><div class="code">' + esc(prize.claimCode) + '</div>'
+          : '<div class="prize" style="font-size:18px">' + esc(prize.name) + '</div><div class="muted">현장 추첨에는 자동으로 응모되었습니다.</div>') + '</div>';
+        btn.disabled = false; btn.textContent = '내 응모 번호와 자료 보기'; btn.dataset.act = 'home';
+      }
+      svg.addEventListener('transitionend', finish);
+      setTimeout(finish, 5200);
+      requestAnimationFrame(function () { svg.style.transform = 'rotate(' + target.toFixed(1) + 'deg)'; });
+    });
+  }
+
+  function refresh(quiet) {
+    return API.call('me', auth()).then(function (res) {
+      if (res.ok) { applyState(res); if (S.view === 'home') render(); if (!quiet) toast(S.drawWins.length ? '당첨 내역이 있습니다.' : '아직 당첨 내역이 없습니다.'); }
+      else if (!quiet) toast(res.message);
+      return res;
+    });
+  }
+
+  app.addEventListener('submit', function (e) { if (e.target.id === 'regform') { e.preventDefault(); submitRegister(e.target); } });
+  app.addEventListener('change', function (e) {
+    if (e.target.id === 'c-all') { $('#c-privacy').checked = $('#c-marketing').checked = e.target.checked; }
+    else if (e.target.id === 'c-privacy' || e.target.id === 'c-marketing') { $('#c-all').checked = $('#c-privacy').checked && $('#c-marketing').checked; }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (e.target === scrim) { closeSheet(); return; }
+    var el = e.target.closest('[data-act]'); if (!el) return;
+    var act = el.dataset.act, id = el.dataset.id;
+    if (act === 'start') { S.view = 'register'; render(); }
+    else if (act === 'opt') {
+      var q = CFG.survey[S.step];
+      if (q.multi) {
+        var arr = S.answers[q.key] || (S.answers[q.key] = []), i = arr.indexOf(id);
+        if (i >= 0) arr.splice(i, 1); else arr.push(id);
+        el.classList.toggle('on', i < 0); el.setAttribute('aria-pressed', String(i < 0));
+        var nb = $('#nextbtn'); if (nb) nb.disabled = arr.length === 0;
+      } else {
+        S.answers[q.key] = id;
+        if (S.step < CFG.survey.length - 1) { S.step++; render(); } else render();
+      }
+    }
+    else if (act === 'next') { if (S.step < CFG.survey.length - 1) { S.step++; render(); } else submitSurvey(); }
+    else if (act === 'prev') { S.step--; render(); }
+    else if (act === 'spin') doSpin();
+    else if (act === 'home') { S.view = 'home'; render(); }
+    else if (act === 'more') { S.showAll = true; render(); }
+    else if (act === 'track') track(id);                       // 링크는 그대로 새 탭에서 열림
+    else if (act === 'open') openContent(id);
+    else if (act === 'close') closeSheet();
+    else if (act === 'consult') openConsult();
+    else if (act === 'consult-send') {
+      var b = $('#consbtn'); busy(b, true, '보내는 중입니다');
+      API.call('consult', Object.assign({ memo: $('#c-memo').value }, auth())).then(function (res) {
+        if (!res.ok) { busy(b, false); $('#conserr').textContent = res.message; return; }
+        applyState(res); closeSheet(); render(); toast('상담 신청을 보냈습니다.');
+      });
+    }
+    else if (act === 'refresh') refresh(false);
+    else if (act === 'reset') { clearSession(); S.lead = null; S.answers = { interests: [] }; S.showAll = false; S.view = 'intro'; render(); }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
+
+  /* ---------- 시작 ---------- */
+  var brand = document.getElementById('brand');
+  if (EV.logo) {
+    brand.classList.add('has-logo'); brand.innerHTML = '<img src="' + esc(EV.logo) + '" alt=""><span>' + esc(EV.client) + '</span>';
+    var fav = document.createElement('link'); fav.rel = 'icon'; fav.href = EV.logo; document.head.appendChild(fav);
+  } else brand.textContent = EV.client;
+  document.getElementById('expo').textContent = [EV.expo, EV.booth].filter(Boolean).join('  |  ');
+  document.title = EV.client + ' 부스 이벤트';
+  if (API.isDemo) document.getElementById('demo').hidden = false;
+
+  var sess = loadSession();
+  if (sess && sess.leadId) {
+    S.lead = sess;
+    API.call('me', sess).then(function (res) {
+      if (res.ok) { applyState(res); routeByLead(); }
+      else if (res.error === 'network') { app.innerHTML = '<div class="loading">' + esc(res.message) + '<div style="margin-top:16px"><button class="btn small" onclick="location.reload()">다시 시도</button></div></div>'; }
+      else { clearSession(); S.lead = null; S.view = 'intro'; render(); }
+    });
+  } else { S.view = 'intro'; render(); }
+})();
+</script>
+</body>
+</html>
